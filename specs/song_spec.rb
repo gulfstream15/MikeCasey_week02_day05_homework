@@ -3,9 +3,12 @@ require_relative( '../song' )
 
 class TestSong < MiniTest::Test
   
-  def test_song_has_title
-    song = Song.new("Imagine - John Lennon")
-    assert_equal("Imagine - John Lennon",song.title)
+  def setup
+    @title1 = Song.new("Imagine - John Lennon")
+  end
+
+  def test_get_song_title
+    assert_equal("Imagine - John Lennon",@title1.title)
   end
 
 end

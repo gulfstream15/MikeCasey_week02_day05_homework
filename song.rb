@@ -6,4 +6,8 @@ attr_accessor :title
     @title = title
   end
 
+  def get_song_title
+    return @name
+  end
+
 end
