@@ -12,7 +12,7 @@ class TestKaraokeBar < MiniTest::Test
     @room1 = {
       name: "Easy",
       guests: ["Jay","Keith"],
-      songs: ["Frank Sinatra - My Way", "Louis Armstrong - Wonderful World"] 
+      songs: ["Frank Sinatra - Under My Skin", "Louis Armstrong - Wonderful World"] 
     }
     
     @room2 = {
