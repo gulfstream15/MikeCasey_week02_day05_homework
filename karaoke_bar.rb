@@ -1,15 +1,9 @@
 class KaraokeBar
 
   attr_accessor :name
-  attr_accessor :rooms
-  attr_accessor :guests
-  attr_accessor :songs
 
   def initialize(name)
     @name = name
-    @guests = guests
-    @songs = songs
-    @rooms = rooms
   end
 
   def get_room_name(room)

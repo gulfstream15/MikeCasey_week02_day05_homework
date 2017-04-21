@@ -6,4 +6,8 @@ attr_accessor :name
     @name = name
   end
 
+  def get_guest_name
+    return @name
+  end
+
 end

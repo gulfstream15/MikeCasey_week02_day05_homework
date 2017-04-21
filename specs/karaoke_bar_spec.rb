@@ -9,6 +9,10 @@ class TestKaraokeBar < MiniTest::Test
 
     @karaoke_bar = KaraokeBar.new("KBar")
 
+    @guest = Guest.new("Bob")
+
+    @song = Song.new("Imagine - John Lennon")
+
     @room1 = {
       name: "Easy",
       guests: ["Jay","Keith"],
@@ -36,8 +40,7 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_checkin_guest
-    guest = Guest.new("Bob")
-    result = @karaoke_bar.checkin_guest(@room1, guest.name)
+    result = @karaoke_bar.checkin_guest(@room1, @guest.name)
     assert_equal(["Jay","Keith","Bob"], result)
   end
 
@@ -47,10 +50,10 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_add_song_to_room
-    song = Song.new("Imagine - John Lennon")
-    result = @karaoke_bar.add_song_to_room(@room2,song.title)
+    result = @karaoke_bar.add_song_to_room(@room2,@song.title)
     assert_equal(["Abba - Waterloo", "Tom Jones - Delilah", "Imagine - John Lennon"], result)
-  end 
+  end
+
 
 end
 
