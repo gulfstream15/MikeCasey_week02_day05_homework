@@ -1,9 +1,11 @@
 class KaraokeBar
 
   attr_accessor :name
+  attr_accessor :entry_fee
 
-  def initialize(name)
+  def initialize(name, entry_fee)
     @name = name
+    @entry_fee = entry_fee
   end
 
   def get_room_name(room)
@@ -27,12 +29,20 @@ class KaraokeBar
     room[:songs] << song
   end
 
-  def get_max_guest_for_room(room)
-    room[:max_guests]
+  def get_room_capacity(room)
+    return room[:capacity]
   end
 
-  
+  def get_total_guests_in_room(room)
+    return room[:guests].size()
+  end
 
+  def guest_added_to_room(room, guests_num)
+   if guests_num > room[:capacity]
+      return false
+   end
+   return true
+  end
 
 end
 

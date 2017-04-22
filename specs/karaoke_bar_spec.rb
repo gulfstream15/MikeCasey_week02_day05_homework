@@ -7,7 +7,7 @@ class TestKaraokeBar < MiniTest::Test
 
   def setup
 
-    @karaoke_bar = KaraokeBar.new("KBar")
+    @karaoke_bar = KaraokeBar.new("KBar", 20)
 
     @guest1 = Guest.new("Mark")
     @guest2 = Guest.new("Mike")
@@ -22,14 +22,14 @@ class TestKaraokeBar < MiniTest::Test
     @room1 = {
       name: "Easy",
       guests: ["Jay","Keith","Adam"],
-      max_guests: 4,
+      capacity: 4,
       songs: ["Frank Sinatra - Under My Skin", "Louis Armstrong - Wonderful World"] 
     }
     
     @room2 = {
       name: "Pop",
       guests: ["Anne","Bob"],
-      max_guests: 2,
+      capacity: 9,
       songs: ["Abba - Waterloo", "Tom Jones - Delilah"] 
     }
 
@@ -63,9 +63,25 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_get_max_guest_for_room()
-    result = @karaoke_bar.get_max_guest_for_room(@room1)
+    result = @karaoke_bar.get_room_capacity(@room1)
     assert_equal(4, result)
   end 
+ 
+  def test_get_total_guests_in_room()
+    result = @karaoke_bar.get_total_guests_in_room(@room1)
+    assert_equal(3, result)
+  end
+
+  def test_guest_added_to_room()
+    result = @karaoke_bar.guest_added_to_room(@room2, @guests.size())
+    assert_same(true, result)
+  end
+
+  def test_guest_added_to_room()
+    result = @karaoke_bar.guest_added_to_room(@room1, @guests.size())
+    assert_same(false, result)
+  end
+
 
 end
 
