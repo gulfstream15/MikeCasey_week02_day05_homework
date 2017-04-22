@@ -44,5 +44,12 @@ class KaraokeBar
    return true
   end
 
+  def can_guest_afford_entry(guest_money)
+    if entry_fee > guest_money
+       return false
+    end
+    return true
+  end
+
 end
 

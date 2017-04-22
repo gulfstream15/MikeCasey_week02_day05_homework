@@ -9,11 +9,11 @@ class TestKaraokeBar < MiniTest::Test
 
     @karaoke_bar = KaraokeBar.new("KBar", 20)
 
-    @guest1 = Guest.new("Mark")
-    @guest2 = Guest.new("Mike")
-    @guest3 = Guest.new("Anne")
-    @guest4 = Guest.new("Peter")
-    @guest5 = Guest.new("Niki")
+    @guest1 = Guest.new("Mark", 30)
+    @guest2 = Guest.new("Mike", 40)
+    @guest3 = Guest.new("Anne", 20)
+    @guest4 = Guest.new("Peter", 15)
+    @guest5 = Guest.new("Niki", 25)
 
     @song = Song.new("Imagine - John Lennon")
 
@@ -81,7 +81,16 @@ class TestKaraokeBar < MiniTest::Test
     result = @karaoke_bar.guest_added_to_room(@room1, @guests.size())
     assert_same(false, result)
   end
+  
+  def test_can_guest_afford_entry()
+    result = @karaoke_bar.can_guest_afford_entry(@guest1.money)
+     assert_same(true, result)
+  end
 
+  def test_can_guest_afford_entry()
+    result = @karaoke_bar.can_guest_afford_entry(@guest4.money)
+     assert_same(false, result)
+  end
 
 end
 

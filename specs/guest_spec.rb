@@ -4,8 +4,8 @@ require_relative( '../guest' )
 class TestGuest < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Bob")
-    @guest2 = Guest.new("Mike")
+    @guest1 = Guest.new("Bob", 30)
+    @guest2 = Guest.new("Mike", 40)
 
     @guests = [@guest1, @guest2]
   end
