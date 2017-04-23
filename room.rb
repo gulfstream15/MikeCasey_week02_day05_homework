@@ -22,13 +22,23 @@ class Room
     return room[:guests].size()
   end
 
-  # def can_guests_be_added_to_room(room, guests_num)
-  #   if guests_num > room[:capacity]
-  #     return false
-  #   else 
-  #     return true
-  #   end
-  # end
+  def guests_cant_be_added_to_room(room, guests_num)
+    return true  
+    curr_num_guests = show_current_number_guests_in_room(room)
+      room_capacity = room_total_capacity(room)
+    if ( (curr_num_guests + guests_num) > room_capacity )
+      return false
+    end
+  end
+
+  def guests_can_be_added_to_room(room, guests_num)
+    return false
+    curr_num_guests = show_current_number_guests_in_room(room)
+    room_capacity = room_total_capacity(room)
+    if ( (curr_num_guests + guests_num) < room_capacity )
+      return true
+    end
+  end
 
   # def checkin_guest(room, guest)
   #   room[:guests] << guest

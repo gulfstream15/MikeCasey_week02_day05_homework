@@ -20,7 +20,7 @@ class TestRoom < MiniTest::Test
     @room3 = {
       name: "Rock",
       guests: ["Simon","Jude","Andrew"],
-      capacity: 10,
+      capacity: 4,
       songs: ["Bon Jovi - Livin' on a prayer", "Bruce Springsteen - Born to Run"] 
      }
 
@@ -40,7 +40,7 @@ class TestRoom < MiniTest::Test
 
   def test_room_total_capacity()
     result = @room.room_total_capacity(@room3)
-    assert_equal(10, result)
+    assert_equal(4, result)
   end 
   
   def test_show_current_number_guests_in_room()
@@ -48,15 +48,15 @@ class TestRoom < MiniTest::Test
     assert_equal(3, result)
   end
 
-  # def test_can_guests_be_added_to_room()
-  #   result = @room.can_guests_be_added_to_room(@room3, @guests.size())
-  #   assert_same(true, result)
-  # end
+  def test_guests_cant_be_added_to_room()
+    result = @room.guests_cant_be_added_to_room(@room3, @guests.size())
+    assert_same(false, result)
+  end
 
-  # def test_can_guests_be_added_to_room()
-  #   result = @room.can_guests_be_added_to_room(@room3, @guests.size())
-  #     assert_same(false, result)
-  # end
+  def test_guests_can_be_added_to_room()
+    result = @room.guests_can_be_added_to_room(@room3, @guests.size())
+    assert_same(true, result)
+  end
 
   # def test_checkin_guest()
   #   result = @room.checkin_guest(@room3, @guest1.name)
