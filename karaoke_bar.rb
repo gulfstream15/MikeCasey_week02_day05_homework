@@ -8,12 +8,28 @@ class KaraokeBar
     @entry_fee = entry_fee
   end
 
-  def get_room_name(room)
+  def club_has_name() 
+    return @name
+  end 
+
+  def club_has_entry_fee() 
+    return @entry_fee
+  end 
+
+  def room_has_name(room)
     return room[:name]
   end
 
-  def get_all_guests_in_room(room)
+  def all_guests_in_room(room)
     return room[:guests]
+  end
+
+  def check_guest_has_any_money(guest_money)
+    if guest_money > 0
+      return true
+    else
+      return false
+    end
   end
 
   def checkin_guest(room, guest)
@@ -29,26 +45,28 @@ class KaraokeBar
     room[:songs] << song
   end
 
-  def get_room_capacity(room)
+  def room_capacity(room)
     return room[:capacity]
   end
 
-  def get_total_guests_in_room(room)
+  def total_guests_in_room(room)
     return room[:guests].size()
   end
 
-  def guest_added_to_room(room, guests_num)
-   if guests_num > room[:capacity]
+  def can_guest_be_added_to_room(room, guests_num)
+    if guests_num > room[:capacity]
       return false
-   end
-   return true
+    else 
+      return true
+    end
   end
 
   def can_guest_afford_entry(guest_money)
     if entry_fee > guest_money
-       return false
+      return false
+    else 
+      return true
     end
-    return true
   end
 
 end

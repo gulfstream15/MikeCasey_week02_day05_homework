@@ -2,6 +2,7 @@ require( 'minitest/autorun' )
 require_relative( '../karaoke_bar' )
 require_relative( '../song' )
 require_relative( '../guest' )
+require_relative( '../room' )
 
 class TestKaraokeBar < MiniTest::Test
 
@@ -18,6 +19,8 @@ class TestKaraokeBar < MiniTest::Test
     @song = Song.new("Imagine - John Lennon")
 
     @guests = [@guest1, @guest2, @guest3, @guest4, @guest5]
+
+    @new_room = Room.new("Rock")
 
     @room1 = {
       name: "Easy",
@@ -37,13 +40,33 @@ class TestKaraokeBar < MiniTest::Test
 
   end 
 
-  def test_get_room_name()
-    result = @karaoke_bar.get_room_name(@room1)
-    assert_equal("Easy", result)
+  def test_club_has_name()
+    result = @karaoke_bar.club_has_name()
+    assert_equal("KBar", result)
   end
 
-  def test_get_all_guests_in_room()
-    result = @karaoke_bar.get_all_guests_in_room(@room2)
+  def test_club_has_entry_fee()
+    result = @karaoke_bar.club_has_entry_fee()
+    assert_equal(20, result)
+  end
+
+  def test_room_has_name()
+    result = @karaoke_bar.room_has_name(@room1)
+    assert_equal("Easy", result)
+  end  
+
+  def test_check_guest_has_any_money
+    result = @karaoke_bar.check_guest_has_any_money(@guest1.money)
+    assert_equal(true, result)
+  end
+
+  def test_checkin_guest()
+    result = @karaoke_bar.checkin_guest(@room1, @guest1.name)
+    assert_equal(["Jay","Keith","Adam","Mark"], result)
+  end
+
+  def test_all_guests_in_room()
+    result = @karaoke_bar.all_guests_in_room(@room2)
     assert_equal(["Anne","Bob"], result)
   end
 
@@ -62,23 +85,23 @@ class TestKaraokeBar < MiniTest::Test
     assert_equal(["Abba - Waterloo", "Tom Jones - Delilah", "Imagine - John Lennon"], result)
   end
 
-  def test_get_max_guest_for_room()
-    result = @karaoke_bar.get_room_capacity(@room1)
+  def test_room_capacity()
+    result = @karaoke_bar.room_capacity(@room1)
     assert_equal(4, result)
   end 
  
-  def test_get_total_guests_in_room()
-    result = @karaoke_bar.get_total_guests_in_room(@room1)
+  def test_total_guests_in_room()
+    result = @karaoke_bar.total_guests_in_room(@room1)
     assert_equal(3, result)
   end
 
-  def test_guest_added_to_room()
-    result = @karaoke_bar.guest_added_to_room(@room2, @guests.size())
+  def test_can_guest_be_added_to_room()
+    result = @karaoke_bar.can_guest_be_added_to_room(@room2, @guests.size())
     assert_same(true, result)
   end
 
-  def test_guest_added_to_room()
-    result = @karaoke_bar.guest_added_to_room(@room1, @guests.size())
+  def test_can_guest_be_added_to_room()
+    result = @karaoke_bar.can_guest_be_added_to_room(@room1, @guests.size())
     assert_same(false, result)
   end
   

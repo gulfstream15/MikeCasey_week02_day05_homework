@@ -8,8 +8,4 @@ attr_accessor :money
     @money = money
   end
 
-  def get_guest_name()
-    return @name
-  end
-
 end

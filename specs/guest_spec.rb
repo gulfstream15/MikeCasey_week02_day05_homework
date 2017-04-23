@@ -10,8 +10,12 @@ class TestGuest < MiniTest::Test
     @guests = [@guest1, @guest2]
   end
   
-  def test_get_guest_name()
+  def test_guest_name()
     assert_equal("Bob",@guest1.name)
   end
+
+  def test_guest_money()
+      assert_equal(40,@guest2.money)
+  end 
 
 end
