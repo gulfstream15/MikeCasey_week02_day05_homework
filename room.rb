@@ -10,4 +10,12 @@ class Room
     return room[:guests]
   end
 
+  def can_guest_afford_entry(entry_fee, guest_money)
+    if entry_fee > guest_money
+      return false
+    else 
+      return true
+    end
+  end
+
 end

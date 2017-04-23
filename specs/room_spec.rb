@@ -1,11 +1,17 @@
 require( 'minitest/autorun' )
+require_relative( '../karaoke_bar' )
 require_relative( '../room' )
+require_relative( '../guest' )
 
 class TestRoom < MiniTest::Test
 
   def setup
 
+    @karaoke_bar = KaraokeBar.new("KBar", 20)
+
     @room = Room.new("Rock")
+
+    @guest1 = Guest.new("Bob", 30)
   
     @new_room = {
       name: "Rock",
@@ -22,8 +28,15 @@ class TestRoom < MiniTest::Test
   end
 
   def test_all_guests_in_room()
-    result = @room.all_room_guests(@new_room)
+    result = @room.all_guests_in_room(@new_room)
     assert_equal(["Simon","Jude","Andrew"], result)
   end
+
+  def test_can_guest_afford_entry()
+    result = @room.can_guest_afford_entry(@karaoke_bar.entry_fee, @guest1.money)
+     assert_same(true, result)
+  end
+
+
 
 end

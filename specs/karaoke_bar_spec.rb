@@ -86,7 +86,7 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_room_total_capacity()
-    result = @karaoke_bar.room_capacity(@room1)
+    result = @karaoke_bar.room_total_capacity(@room1)
     assert_equal(4, result)
   end 
  
