@@ -10,11 +10,11 @@ class TestKaraokeBar < MiniTest::Test
 
     @karaoke_bar = KaraokeBar.new("KBar", 20)
 
-    @guest1 = Guest.new("Mark", 30)
-    @guest2 = Guest.new("Mike", 40)
-    @guest3 = Guest.new("Anne", 20)
-    @guest4 = Guest.new("Peter", 15)
-    @guest5 = Guest.new("Niki", 25)
+    @guest1 = Guest.new("Mark", 30, "Rock")
+    @guest2 = Guest.new("Mike", 40, "Pop")
+    @guest3 = Guest.new("Anne", 20, "Easy")
+    @guest4 = Guest.new("Peter", 15, "Rock")
+    @guest5 = Guest.new("Niki", 25, "Easy")
 
     @song = Song.new("Imagine - John Lennon")
 
