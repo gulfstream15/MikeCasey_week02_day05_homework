@@ -40,13 +40,13 @@ class TestKaraokeBar < MiniTest::Test
 
   end 
 
-  def test_club_has_name()
-    result = @karaoke_bar.club_has_name()
+  def test_bar_has_name()
+    result = @karaoke_bar.bar_has_name()
     assert_equal("KBar", result)
   end
 
-  def test_club_has_entry_fee()
-    result = @karaoke_bar.club_has_entry_fee()
+  def test_bar_has_entry_fee()
+    result = @karaoke_bar.bar_has_entry_fee()
     assert_equal(20, result)
   end
 
@@ -85,7 +85,7 @@ class TestKaraokeBar < MiniTest::Test
     assert_equal(["Abba - Waterloo", "Tom Jones - Delilah", "Imagine - John Lennon"], result)
   end
 
-  def test_room_capacity()
+  def test_room_total_capacity()
     result = @karaoke_bar.room_capacity(@room1)
     assert_equal(4, result)
   end 

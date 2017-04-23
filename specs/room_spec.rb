@@ -21,7 +21,7 @@ class TestRoom < MiniTest::Test
     assert_equal("Rock",result)
   end
 
-  def test_all_room_guests()
+  def test_all_guests_in_room()
     result = @room.all_room_guests(@new_room)
     assert_equal(["Simon","Jude","Andrew"], result)
   end

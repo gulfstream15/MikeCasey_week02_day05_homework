@@ -6,7 +6,7 @@ class Room
     @name = name
   end
 
-  def all_room_guests(room)
+  def all_guests_in_room(room)
     return room[:guests]
   end
 

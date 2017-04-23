@@ -11,11 +11,11 @@ class TestGuest < MiniTest::Test
   end
   
   def test_guest_name()
-    assert_equal("Bob",@guest1.name)
+    assert_equal("Bob", @guest1.name)
   end
 
   def test_guest_money()
-      assert_equal(40,@guest2.money)
+      assert_equal(40, @guest2.money)
   end 
 
 end

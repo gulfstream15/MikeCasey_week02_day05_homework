@@ -8,11 +8,11 @@ class KaraokeBar
     @entry_fee = entry_fee
   end
 
-  def club_has_name() 
+  def bar_has_name() 
     return @name
   end 
 
-  def club_has_entry_fee() 
+  def bar_has_entry_fee() 
     return @entry_fee
   end 
 
@@ -45,7 +45,7 @@ class KaraokeBar
     room[:songs] << song
   end
 
-  def room_capacity(room)
+  def room_total_capacity(room)
     return room[:capacity]
   end
 
